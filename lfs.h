@@ -659,6 +659,10 @@ static inline void* lfs_malloc(size_t size) {
     return malloc(size);
 }
 
+#ifndef LFS_NO_BMAP
+int lfs_bmap(lfs_t *lfs, lfs_file_t *file, lfs_off_t offset, lfs_block_t *block_out, lfs_off_t *offset_out);
+#endif
+
 #ifdef __cplusplus
 } /* extern "C" */
 #endif

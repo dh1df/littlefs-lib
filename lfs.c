@@ -4517,3 +4517,12 @@ uint32_t lfs_crc(uint32_t crc, const void* buffer, size_t size) {
 
     return crc;
 }
+
+#ifndef LFS_NO_BMAP
+int lfs_bmap(lfs_t *lfs, lfs_file_t *file, lfs_off_t offset, lfs_block_t *block_out, lfs_off_t *offset_out)
+{
+    int err = lfs_ctz_find(NULL, &file->cache, file->ctz.head, file->ctz.size, offset, block_out, offset_out);
+
+    return err;
+}
+#endif
